@@ -1,48 +1,30 @@
-class Bank:
-    bank_Name='lena-dena'
-    bank_ifsc='l@d1234'
-    bank_branch='gwalior'
-    bank_manager='mr.Akash Gupta'
-    bank_roi=7.7
-    def __init__(self,n,ac,ad,g,b=10):
-        self.name=n
-        self.account=ac
-        self.adhar=ad
-        self.gender=g
-        self.balance=b
+class School:
+    school_name='DPS'
+    school_location='Gwalior'
+    school_principal='miss.peter'
+    school_fees={'1th':12000,'2nd':13000,'3rd':14000,'4th':15000,'5th':16000,
+                '6th':17000,'7th':18000,'8th':19000,'9th':20000,'10th':21000,'11th':22000,'12th':23000,}
+    def __init__ (self,n,a,c,id,am):
+        self.stud_Name=n
+        self.stud_Age=a
+        self.stud_Class=c
+        self.stud_ID=id
+        self.paid_amount=am
+        self.remaining_amount=School.school_fees.get(self.stud_Class)-self.paid_amount
 
-    @classmethod
-    def display_bank_details(cls):
-        print('bank name is',cls.bank_Name)
-        print('bank ifsc is',cls.bank_ifsc)
-        print('bank branch is',cls.bank_branch)
-        print('bank manager is',cls.bank_manager)
-        print('bank roi is',cls.bank_roi)
+    def student_details(self):
+        print(f'Name of Student is {self.stud_Name}')
+        print(f'Age is {self.stud_Age}')
+        print(f'class is {self.stud_Class}')
+        print(f'Student ID is {self.stud_ID}')
+        print('student fees',School.school_fees.get(self.stud_Class))
+        print(f'amount paid by the student {self.paid_amount}')
+        print(f'remaining amount is {self.remaining_amount}')
 
-    @staticmethod
-    def get_int_data(s):
-        data=int(input(f'enter int data for {s}'))
-        return data
+Akash=School('akash gupta',23,'10th',592418,10000)
+Akku=School('akash',23,'11th',592418,13000)
 
-    @classmethod
-    def modify_roi(cls):
-        newroi=cls.get_int_data('newroi')
-        cls.bank_roi=newroi
-        print(newroi,'roi is modified')
-        
-    def withdraw(self):
-        amount=self.get_int_data('withdraw amount')
-        if self.balance>=amount:
-            self.balance-=amount
-            print(amount,'withdrwal is successful')
-            print(f'your balance is {self.balance}')
-        else:
-            print('low balance')
-            print(f'your balance is {self.balance}')
 
-akash=Bank('Akash Gupta',2334,9890,'Male',1123344)
-itii=Bank('itishree',236764,3456544,'female',123456789)
-akash.modify_roi()
-akash.withdraw()
-Bank.display_bank_details()
+School.student_details(Akash) # Akash.student_details()
+School.student_details(Akku)
 
